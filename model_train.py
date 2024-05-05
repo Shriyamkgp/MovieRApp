@@ -15,15 +15,6 @@ class Tokenization():
             words = [w for w in words if not w in stops]
         return(words)
 
-    @staticmethod
-    def review_to_sentences( review, tokenizer, remove_stopwords=False ):
-            raw_sentences = tokenizer.sent_tokenize(review)
-            sentences = []
-            for raw_sentence in raw_sentences:
-                if len(raw_sentence) > 0:
-                    sentences.append( Tokenization.review_to_wordlist( raw_sentence, remove_stopwords ))
-            return sentences
-
 
 #model training
 from sklearn.feature_extraction.text import CountVectorizer
