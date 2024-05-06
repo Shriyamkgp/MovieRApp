@@ -1,6 +1,9 @@
-Here I have created an app to classify a movie review as positive or negative and also draw word cloud for the Review.
-You can upload the input as:
-1. .txt file
+Requirement: Scikit-Learn version 1.4.2
+
+MovieRApp is an app that classifies a movie review as positive or negative and draws a word cloud of the Review.
+
+You can upload the review through:
+1. file upload as .txt file
 2. manually typing in the text box
 
 
