@@ -34,7 +34,8 @@ clean_train_review
 vectorizer = CountVectorizer(analyzer = "word",   tokenizer = None,  preprocessor = None, stop_words = None, max_features = 5000)
 
 #vectorization
-train_data_features = vectorizer.fit_transform(clean_train_review)
+vectorizer = vectorizer.fit(clean_train_review)
+train_data_features = vectorizer.transform(clean_train_review)
 train_data_features #returns a sparse matrix
 np.asarray(train_data_features)
 
@@ -63,3 +64,8 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 cm = confusion_matrix(testdata['sentiment'],output['sentiment'])
 disp = ConfusionMatrixDisplay(confusion_matrix=cm)
 disp.plot()
+
+#Saving the vectorizer and model through pickle
+import pickle
+pickle.dump(vectorizer, open('vectorizer.pkl','wb'))
+pickle.dump(forest, open('forest_clf.pkl','wb'))
