@@ -40,8 +40,17 @@ train_data_features #returns a sparse matrix
 np.asarray(train_data_features)
 
 #Training the Random Forest classifier
-forest = RandomForestClassifier(n_estimators = 100)
-forest = forest.fit(train_data_features,label)
+from sklearn.model_selection import GridSearchCV
+
+X = train_data_features
+y = label
+param_grid = { 
+    'n_estimators': [100,200, 700],
+    'max_features': ['auto', 'sqrt', 'log2']
+}
+forest_model = RandomForestClassifier(n_estimators = 100)
+forest = GridSearchCV(estimator=forest_model, param_grid=param_grid, cv= 5)
+forest.fit(train_data_features, label)
 
 #Test Data
 testdata = pd.read_csv('test_set_3.csv')
